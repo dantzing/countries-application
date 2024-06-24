@@ -32,5 +32,6 @@ My first thought after reading the requirements is that it will look like this. 
 - Name, population, language, currency done
 - Flag in progress, rending <img as text not image
 ### 4 hours complete
+- Flag rendering is working, ChatGPT wasn't very helpful. Finally got it to work by changing cellRendererFramework to cellRenderer which was a total guess
 ### 5 hours complete
 ### 6 hours complete
