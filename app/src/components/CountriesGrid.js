@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { AgGridReact } from 'ag-grid-react';
 import 'ag-grid-community/styles/ag-grid.css';
 import 'ag-grid-community/styles/ag-theme-alpine.css';
@@ -7,21 +7,16 @@ const CountriesGrid = () => {
     const gridRef = useRef(null);
 
     const columnDefs = [
-      { headerName: 'Make', field: 'make' },
-      { headerName: 'Model', field: 'model' },
-      { headerName: 'Price', field: 'price' }
+      { headerName: 'Name', field: 'name.common' }
     ];
   
-    const rowData = [
-      { make: 'Toyota', model: 'Celica', price: 35000 },
-      { make: 'Ford', model: 'Mondeo', price: 32000 },
-      { make: 'Porsche', model: 'Boxster', price: 72000 }
-    ];
+    const [rowData, setRowData] = useState([]);
   
     useEffect(() => {
-      if (gridRef.current) {
-        console.log('Grid instance:', gridRef.current.api);
-      }
+      fetch('https://restcountries.com/v3.1/all') // Replace with your data source
+      .then(result => result.json())
+      .then(rowData => setRowData(rowData))
+      .catch(error => console.error('Error fetching data:', error));
     }, []);
   
     return (
