@@ -21,10 +21,16 @@ My first thought after reading the requirements is that it will look like this. 
 ![wireframe](wireframe.png)
 ## Diary
 ### 1 hour complete
-- countries-application.html created. Repo and initial development environment set up with fresh VS code install, file:// rendering of app
+- countries-application.html created
+- Repo and initial development environment set up with fresh VS code install
+- file:// rendering of app
 ### 2 hours complete
-Dev env wasn´t complete, needed npm. Installed that and with ChatGPT's help I have a working ag-grid with hard coded data
+- Dev env wasn´t complete, needed npm
+- Installed that and with ChatGPT's help I have a working ag-grid with hard coded data
 ### 3 hours complete
+- Grid loading all countries from API
+- Name, population, language, currency done
+- Flag in progress, rending <img as text not image
 ### 4 hours complete
 ### 5 hours complete
 ### 6 hours complete
