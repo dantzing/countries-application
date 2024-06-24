@@ -8,12 +8,21 @@ const CountriesGrid = () => {
 
     const columnDefs = [
       { headerName: 'Common Name', valueGetter: params => params.data.name.common },
+      { headerName: 'Population', field: 'population' }, // TODO format nicely
       { 
         headerName: 'First Language', 
         valueGetter: params => {
           const languages = params.data.languages;
           const firstLanguageKey = languages ? Object.keys(languages)[0] : null;
           return firstLanguageKey ? languages[firstLanguageKey] : 'N/A';
+        }
+      },
+      { 
+        headerName: 'Currency', 
+        valueGetter: params => {
+          const currencies = params.data.currencies;
+          const firstCurrency = currencies ? Object.values(currencies)[0] : null;
+          return firstCurrency ? firstCurrency.name : '';
         }
       }
     ];
