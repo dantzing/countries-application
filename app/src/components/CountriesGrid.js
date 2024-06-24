@@ -2,6 +2,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import { AgGridReact } from 'ag-grid-react';
 import 'ag-grid-community/styles/ag-grid.css';
 import 'ag-grid-community/styles/ag-theme-alpine.css';
+import ImgRenderer from './ImgRenderer';
 
 const CountriesGrid = () => {
     const gridRef = useRef(null);
@@ -24,7 +25,12 @@ const CountriesGrid = () => {
           const firstCurrency = currencies ? Object.values(currencies)[0] : null;
           return firstCurrency ? firstCurrency.name : '';
         }
-      }
+      },
+      { 
+        headerName: 'Flag', 
+        field: 'flags.png',
+        cellRenderer: ImgRenderer
+              }
     ];
   
     const [rowData, setRowData] = useState([]);
