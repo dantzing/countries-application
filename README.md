@@ -34,4 +34,5 @@ My first thought after reading the requirements is that it will look like this. 
 ### 4 hours complete
 - Flag rendering is working, ChatGPT wasn't very helpful. Finally got it to work by changing cellRendererFramework to cellRenderer which was a total guess
 ### 5 hours complete
+- Coded grid selection change to update common name in details component
 ### 6 hours complete
