@@ -43,12 +43,21 @@ const CountriesGrid = () => {
         .catch(error => console.error('Error fetching data:', error));;
     }, []);
   
+    const onSelectionChanged = () => {
+      console.debug('CountriesGrid.onSelectionChanged');
+    };
+    const gridOptions = {
+      rowSelection: 'single',
+      onSelectionChanged: onSelectionChanged
+    };
+
     return (
       <div className="ag-theme-alpine" style={{ height: 400, width: 600 }}>
         <AgGridReact
           ref={gridRef}
           rowData={rowData}
-          columnDefs={columnDefs}>
+          columnDefs={columnDefs}
+          gridOptions={gridOptions}>
         </AgGridReact>
       </div>
     );
