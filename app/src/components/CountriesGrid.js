@@ -3,6 +3,7 @@ import { AgGridReact } from 'ag-grid-react';
 import 'ag-grid-community/styles/ag-grid.css';
 import 'ag-grid-community/styles/ag-theme-alpine.css';
 import ImgRenderer from './ImgRenderer';
+import CountryDetails from './CountryDetails';
 
 const CountriesGrid = () => {
     const gridRef = useRef(null);
@@ -42,9 +43,16 @@ const CountriesGrid = () => {
         })
         .catch(error => console.error('Error fetching data:', error));;
     }, []);
-  
+    let gridApi;
+    const onGridReady = (params) => {
+      gridApi = params.api
+    }
+    const [selectedCountry, setSelectedCountry] = useState(null);
     const onSelectionChanged = () => {
-      console.debug('CountriesGrid.onSelectionChanged');
+      const selectedNodes = gridApi.getSelectedNodes();
+      setSelectedCountry(selectedNodes[0].data);
+      console.debug('CountriesGrid.onSelectionChanged selectedNodes=');
+      console.debug(selectedNodes);
     };
     const gridOptions = {
       rowSelection: 'single',
@@ -57,8 +65,10 @@ const CountriesGrid = () => {
           ref={gridRef}
           rowData={rowData}
           columnDefs={columnDefs}
-          gridOptions={gridOptions}>
+          gridOptions={gridOptions}
+          onGridReady={onGridReady}>
         </AgGridReact>
+        <CountryDetails countryData={selectedCountry}/>
       </div>
     );
   };
